@@ -66,7 +66,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "/api/userSignup";
+      const url = `/api/userSignup`;
       const { data: res } = await axios.post(url, data).then((res) => {
         dispatch(setUserDetails(res, res.data.OTP));
         navigate("/user/otp-page");
