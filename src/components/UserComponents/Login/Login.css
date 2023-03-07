@@ -1,0 +1,49 @@
+.loginPage{
+    width: 40%;
+    margin: auto;
+    min-width: 450px;
+}
+.loginPage--form{
+    background-color: rgba(185,185,183,0.233);
+    border-radius:5px ;
+    box-shadow: 2px 3px 10px gray;
+}
+.loginPage--form--img{
+    text-align: center;
+    display: block;
+}
+h3{
+    position:relative;
+    bottom: 1.5rem;
+    font-weight: bold;
+}
+body{
+    overflow-x: hidden;
+}
+#root{
+    overflow-x: hidden;
+}
+.error_msg {
+	width: 370px;
+	padding: 15px;
+	margin: 5px 0;
+	font-size: 14px;
+	background-color: #f34646;
+	color: white;
+	border-radius: 5px;
+	text-align: center;
+}
+.error-show{
+    color: red;
+    font-size: 14px;
+    text-align: center;
+
+}
+.createAcc{
+    text-align: end;
+    color: royalblue;
+    padding-top: 1rem;
+}
+.gbtn{
+padding-top: 1rem;
+}

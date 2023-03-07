@@ -1,0 +1,9 @@
+.del-btn{
+    display: flex;
+    justify-content: end;
+}
+.pro-reputation{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
