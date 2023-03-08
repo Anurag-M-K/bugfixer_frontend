@@ -70,7 +70,7 @@ function Login() {
           <div className="loginPage--form--img">
             <br />
             <br />
-            <h3 className="center mt-2">Login</h3>
+            <h3 className="center mt-2">Logins</h3>
           </div>
           <div className="form-outline mb-4">
             <label className="form-label" for="form1Example23">
