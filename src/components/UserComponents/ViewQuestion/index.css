@@ -144,6 +144,9 @@
     align-items: center;
     padding-right: 15px;
     padding-left: 0;
+
+    justify-content: flex-start;
+    align-items: center;
   }
   p {
     font-size: 15px
@@ -170,4 +173,19 @@
   .tickmark{
     cursor: pointer;
     
+  }
+
+  @media screen and(max-width:568px){
+    .react-quill{
+      width: 50%;
+    }
+    
+  }
+  @media (min-width: 576px){
+
+.col-sm-8 {
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 43.666667%;
+}
   }

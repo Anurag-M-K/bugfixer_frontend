@@ -10,7 +10,7 @@ import Test from '../pages/user/Test'
 import UserEditProfilePage from "../pages/user/UserEditProfilePage";
 import Otp from "../components/UserComponents/Signup/Otp";
 import CommunityHomePage from "../pages/Community/CommunityHomePage";
-import { Route ,Routes } from 'react-router-dom';
+import {  Route ,Routes } from 'react-router-dom';
 import ViewQuestionPage from "../pages/user/ViewQuestionPage";
 import Messenger from "../components/Community/Messenger/Messenger";
 import SingleCommunityPage from "../pages/Community/SingleCommunityPage";
@@ -33,7 +33,7 @@ function UserRoute(){
           <Route exact path='/user/otp-page' element={<Otp/>} />
           <Route exact path='/userview-question' element={<Private><ViewQuestionPage/></Private>} />
           <Route exact path="/user/messenger" element={<Private><Messenger/></Private>}/>
-          <Route exact path="/user/page" element={<CommunityHomePage/>}/>
+          <Route exact path="/user/page" element={<Private><CommunityHomePage/></Private>}/>
           <Route exact path="/user/repu" element={<ReputationBadge/>}/>
           <Route exact path="/user/community" element={<CommunityHomePage/>}/>
           <Route exact path="/user/single-community/:id" element={<SingleCommunityPage/>}/>
@@ -45,3 +45,5 @@ function UserRoute(){
 }
 
 export default UserRoute;
+
+

@@ -14,7 +14,10 @@ import {Link, useNavigate} from 'react-router-dom'
 import { HiUsers } from "react-icons/hi";
 import {message} from 'antd';
 import { AiOutlineTag } from "react-icons/ai";
-import './Sidebar.css'
+import { RiLogoutCircleRLine } from "react-icons/ri";
+import './Sidebar.css';
+
+
 export default function Sidebar() {
   const navigate = useNavigate()
   const [currentLink, setCurrentLink] = useState(1);
@@ -220,6 +223,17 @@ const handleLogout =(e)=>{
                 }}>
               <div> <FaAddressCard style={{width:"25px"}} /></div>
                   <span className="buttonsDashboard" > Reported Questions</span>
+              </a>
+            </li>
+            <li
+              className={currentLink === 6 ? "active" : "none"}
+              onClick={() => setCurrentLink(6)}
+            >
+              <a nClick={()=>{
+                  navigate('/admin/reported-question-manage')
+                }}>
+              <div> <RiLogoutCircleRLine style={{width:"25px",color:"white"}} /></div>
+                  <span  onClick={handleLogout} className="buttonsDashboard" > Logout</span>
               </a>
             </li>
           </ul>

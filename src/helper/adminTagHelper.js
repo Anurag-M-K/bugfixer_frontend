@@ -1,3 +1,4 @@
+import { toast } from "react-hot-toast";
 import instance from "../config/axiosInstance";
 
 export const addTag = async(values,adminToken)=>{
@@ -12,6 +13,9 @@ export const addTag = async(values,adminToken)=>{
         })
         return addTag.data
     } catch (error) {
+        console.log(error)
+        toast.error("Something went wrong. Please try again.");
+
     }
 }
 
@@ -26,6 +30,10 @@ export const getTags = async(adminToken)=>{
         })
         return getTags.data
     } catch (error) {
+        
+        console.log(error)
+        toast.error("Something went wrong. Please try again.");
+
     }
 }
 
@@ -42,5 +50,8 @@ export const deleteTag = async(tag , adminToken)=>{
       })
       return deleteTag.data
     } catch (error) {
+        
+        console.log(error)
+        toast.error("Something went wrong. Please try again.");
     }
   }

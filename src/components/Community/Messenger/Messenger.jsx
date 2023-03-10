@@ -36,6 +36,10 @@ function Messenger() {
   const [videoFile, setVideoFile] = useState(null);
   const imageRef = useRef();
   const videoRef = useRef();
+  const { clickedUserDetails } = useSelector((state) => state.clickedUser);
+
+
+
 
   useEffect(() => {
     socket.current = io(import.meta.env.VITE_APP_SOCKET_URL);
@@ -85,27 +89,33 @@ function Messenger() {
 
   const handleSubmit = async () => {
     // e.preventDefault();
-    const message = {
-      conversationId: currentChat._id,
-      sender: userDetails._id,
-      text: newMessage,
-      type: "text",
-    };
-
-    //sending messages to socket server
-    const recieverId = currentChat?.members?.find(
-      (member) => member !== userDetails._id
-    );
-    socket.current.emit("sendMessage", {
-      senderId: userDetails._id,
-      recieverId,
-      text: newMessage,
-    });
-
-    //sending messages to database
-    const res = await postMessages(message);
-    setMessages([...messages, res]);
-    setNewMessage("");
+    try {
+      console.log("messges ",newMessage)
+      const message = {
+        conversationId: currentChat._id,
+        sender: userDetails._id,
+        text: newMessage,
+        type: "text",
+      };
+  
+      //sending messages to socket server
+      const recieverId = currentChat?.members?.find(
+        (member) => member !== userDetails._id
+      );
+      socket.current.emit("sendMessage", {
+        senderId: userDetails._id,
+        recieverId,
+        text: newMessage,
+      });
+  
+      //sending messages to database
+      const res = await postMessages(message);
+      setMessages([...messages, res]);
+      setNewMessage("");
+    } catch (error) {
+      console.log(error)
+    }
+   
   };
 
   useEffect(() => {
@@ -181,7 +191,7 @@ function Messenger() {
             >
               {conversations?.map((c) => (
                 <div onClick={() => setCurrentChat(c)}>
-                  <Conversation messages={messages} conversation={c} />
+                  <Conversation messages={messages} conversation={c} clickedUserDetails={clickedUserDetails} />
                 </div>
               ))}
             </div>
@@ -291,10 +301,6 @@ function Messenger() {
                     style={{ display: "none" }}
                     ref={imageRef}
                   />
-
-                  {/* <button onClick={handleSubmit} className="chatSubmitButton">
-                    Send
-                  </button> */}
                 </div>
               </>
             ) : (
@@ -310,9 +316,23 @@ function Messenger() {
           </div>
         </div>
       </div>
-      +
+      
+
+
+      {/* <div className="row">
+     <div className="col-lg-3 col-sm-4"></div>
+     <div className="col-lg-6 col-sm-4"></div>
+     <div className="col-lg-3 col-sm-4 chatOnline"><div></div> */}
+
+
+
+
+
+
     </>
   );
+
+
 }
 
 export default Messenger;

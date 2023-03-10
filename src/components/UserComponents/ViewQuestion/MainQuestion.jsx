@@ -39,16 +39,12 @@ function MainQuestion() {
   const [answer, setAnswer] = useState([]);
   const [questionData, setQuestionData] = useState([]);
   const [comment, setComment] = useState("");
-  // var [vote, setVote] = useState(0);
   var [answerVote, setAnswerVote] = useState([]);
   const dispatch = useDispatch();
   const { tokenData } = useSelector((state) => state.user);
-  // const [voteResponse,   ] = useState("");
   const [voteRes, setVoteRes] = useState("");
   const { singleQuestiondata } = useSelector((state) => state.singleQuestion);
-  const { particularAnswersDetails } = useSelector(
-    (state) => state.particularAnswers
-    );
+  const { particularAnswersDetails } = useSelector((state) => state.particularAnswers);
     const { userDetails } = useSelector((state) => state.user);
 
   //geting question id from url
@@ -123,7 +119,7 @@ function MainQuestion() {
             dispatch(setUserDetails(user.response));
             dispatch(setParticularAnswerDetails(response.data));
 
-            dispatch(setSingleQuestionDetails(response));
+            // dispatch(setSingleQuestionDetails(response));
           });
           toast.success("Answer added successfully");
 
@@ -307,7 +303,7 @@ function MainQuestion() {
                   flexDirection: "column",
                 }}
               >
-                <div className="col-md-12 side">
+                <div className="side">
                   <div className="upArrow">
                     <span className="arrow">
                       <svg
@@ -358,7 +354,7 @@ function MainQuestion() {
                   </div>
                 </div>
               </div>
-              <div className="col-md-10">
+              <div className="col-md-10" >
                 <div className="question-answer">
                   <p>{ReactHtmlParser(questionData?.body)}</p>
                   <div className="author">
@@ -422,6 +418,7 @@ function MainQuestion() {
                   </div>
                 </div>
               </div>
+             
             </div>
           </div>
         </div>

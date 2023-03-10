@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { addTag, getTags } from "../../../helper/adminTagHelper";
 import { setTags } from "../../../redux/features/tagSlice";
@@ -31,6 +30,8 @@ function TagAddModal() {
       })();
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong. Please try again.");
+
     }
   };
 
