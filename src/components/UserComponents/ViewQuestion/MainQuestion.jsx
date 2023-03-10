@@ -356,7 +356,7 @@ function MainQuestion() {
               </div>
               <div className="col-md-10" >
                 <div className="question-answer">
-                  <p>{ReactHtmlParser(questionData?.body)}</p>
+                  <p style={{width:"30vw"}}>{ReactHtmlParser(questionData?.body)}</p>
                   <div className="author">
                     <small>
                       asked{new Date(questionData?.created_at).toLocaleString()}
@@ -498,7 +498,7 @@ function MainQuestion() {
               </div>
 
               <div
-                className="question-answer col-md-10 col-sm-6  "
+                className="question-answer col-md-10   "
                 style={{
                   display: "flex",
                   justifyContent: " space-evenly",

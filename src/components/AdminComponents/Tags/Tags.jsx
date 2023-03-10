@@ -58,7 +58,6 @@ function Tags() {
           <CardGroup>
             {allTags[0]?.tags?.map((tag, index) => {
               return (
-                <>
                   <div key={index} className="tag-card">
                     <Card className="community-card-tag bg-dark">
                       <div className="coll-md-12 d-flex justify-content-end">
@@ -79,7 +78,7 @@ function Tags() {
                       </Card.Body>
                     </Card>
                   </div>
-                </>
+                
               );
             })}
           </CardGroup>

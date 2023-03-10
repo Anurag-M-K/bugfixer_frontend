@@ -21,7 +21,7 @@ export const addTag = async(values,adminToken)=>{
 
 export const getTags = async(adminToken)=>{
     try {
-        const getTags= await instance({
+        const getTags = await instance({
             url:"/admin/get-tags",
             method:"GET",
             headers:{

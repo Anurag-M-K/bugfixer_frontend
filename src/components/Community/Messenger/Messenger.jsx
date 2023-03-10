@@ -28,7 +28,7 @@ function Messenger() {
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const scrollRef = useRef(); //which is used for automatically scroll up when a message is send
-  const socket = useRef(io(import.meta.env.VITE_APP_SOCKET_URL));
+  const socket = useRef();
   const [value, setValue] = useState("");
   const { clidkedUserDetails } = useSelector((state) => state.clickedUser);
   const [showMenu, setShowMenu] = useState(false);
@@ -39,17 +39,25 @@ function Messenger() {
   const { clickedUserDetails } = useSelector((state) => state.clickedUser);
 
 
+  useEffect(()=>{
+socket.current = io(import.meta.env.VITE_APP_SOCKET_URL)
+  },[])
 
 
+///geting message from socket server (on) 
   useEffect(() => {
-    socket.current = io(import.meta.env.VITE_APP_SOCKET_URL);
-    socket.current.on("getMessage", (data) => {
-      setArrivalMessage({
-        sender: data?.senderId,
-        text: data?.text,
-        createdAt: Date.now(),
+    try {
+      socket.current = io(import.meta.env.VITE_APP_SOCKET_URL);
+      socket.current.on("getMessage", (data) => {
+        setArrivalMessage({
+          sender: data?.senderId,
+          text: data?.text,
+          createdAt: Date.now(),
+        });
       });
-    });
+    } catch (error) {
+      console.log(error)
+    }
   }, []);
 
   useEffect(() => {
@@ -60,7 +68,9 @@ function Messenger() {
 
   useEffect(() => {
     socket.current.emit("addUser", userDetails._id);
-    socket.current.on("getUsers", (users) => {});
+    socket.current.on("getUsers", (users) => {
+      console.log("users ",users)
+    });
   }, [userDetails]);
 
   //geting existing conversations
@@ -85,12 +95,10 @@ function Messenger() {
     } catch (error) {
       console.log(error);
     }
-  }, [currentChat]);
+  }, [currentChat,messages]);
 
   const handleSubmit = async () => {
-    // e.preventDefault();
     try {
-      console.log("messges ",newMessage)
       const message = {
         conversationId: currentChat._id,
         sender: userDetails._id,
@@ -115,10 +123,10 @@ function Messenger() {
     } catch (error) {
       console.log(error)
     }
-   
   };
 
   useEffect(() => {
+    console.log("6");
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 

@@ -13,7 +13,7 @@ function TagAddModal() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const { adminToken } = useSelector((state) => state.adminToken);
+  const { adminDetails } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
   const [state, setState] = useState("");
 
@@ -22,8 +22,8 @@ function TagAddModal() {
   const onSubmit = (values) => {
     try {
       (async () => {
-        const data = await addTag(values, adminToken);
-        const tags = await getTags(adminToken);
+        const data = await addTag(values, adminDetails);
+        const tags = await getTags(adminDetails);
         setState(tags);
         dispatch(setTags(tags));
         toast.success("Tag added successfully");
@@ -42,9 +42,10 @@ function TagAddModal() {
     onSubmit,
   });
 
+
   useEffect(() => {
     (async () => {
-      const tags = await getTags(adminToken);
+      const tags = await getTags(adminDetails);
       setState(tags);
       dispatch(setTags(tags));
     })();
