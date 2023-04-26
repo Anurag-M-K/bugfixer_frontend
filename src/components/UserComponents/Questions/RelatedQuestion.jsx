@@ -30,10 +30,8 @@ let param = useParams()
       }
     })();
   }, [param]);
-  console.log(hotQuestions)
 
   const fetchHotQuestion = (id)=>{
-    console.log(id)
         try {
           
            axios.get(`/api/question/${id}`).then(async (res) => {

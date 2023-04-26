@@ -25,11 +25,6 @@ export default function Conversation({ conversation,messages,clickedUserDetails 
     }
   }, [userDetails, conversation]);
 
-  
-
-  // var sample = [user,[messages]]
-
-
   return (
     <>
     

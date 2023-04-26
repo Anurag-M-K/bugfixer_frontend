@@ -3,7 +3,6 @@ import "./UserQuestions.scss";
 import ReactHtmlParser from "react-html-parser";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Pagination from "./Pagination";
 import ReactPaginate from "react-paginate";
 
 const UserQuestions = () => {
@@ -27,7 +26,6 @@ const UserQuestions = () => {
 
 
 
-///////////////////////////////////////////////////
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + postsPerPage;
@@ -55,17 +53,20 @@ const handlePageClick = (event) => {
             <div className="left text-muted mr-3">
               <p>votes: {questionData?.vote.length ?  questionData?.vote.length : "0"} </p>
               <br />
-              <p>Answers:{questionData?.answerDetails.length ? questionData?.answerDetails.length : "0"} </p>
+              <p >Answers:{questionData?.answerDetails.length ? questionData?.answerDetails.length : "0"} </p>
               <br />
               <small>12 views</small>
             </div>
             <div className="right">
               <Link to={`/user/question?id=${questionData?._id}`}>
-                <h5 className="que font-weight-normal">
+                <h5 style={{overflowWrap:"anywhere"}} className="que font-weight-normal question-p-tag">
                   {questionData?.title}
                 </h5>
               </Link>
-              <p>{ReactHtmlParser(truncate(questionData?.body, 300))} </p>
+             <div>
+              
+              <p style={{overflowWrap:"anywhere"}} className="question-p-tag">{ReactHtmlParser(truncate(questionData?.body, 300))} </p>
+              </div> 
 
               <>
                 <div className="tag-image">
@@ -174,7 +175,6 @@ const handlePageClick = (event) => {
 
 <div>
 
-        {/* <Pagination  endPage={endPage} startPage={startPage} postsPerPage={postsPerPage} totalPosts={questionDetails.length} paginate={paginate} /> */}
         <ReactPaginate
         breakLabel="..."
         nextLabel="next"

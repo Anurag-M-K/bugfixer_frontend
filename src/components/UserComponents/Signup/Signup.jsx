@@ -64,11 +64,12 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(showLoading())
     try {
       const url = `/api/userSignup`;
       const { data: res } = await axios.post(url, data).then((res) => {
+        dispatch(hideLoading())
         dispatch(setUserDetails(res, res.data.OTP));
-        
         navigate("/user/otp-page");
       });
     } catch (error) {

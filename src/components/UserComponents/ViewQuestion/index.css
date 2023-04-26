@@ -189,3 +189,15 @@
     max-width: 43.666667%;
 }
   }
+  .submit-btn{
+    margin-bottom: 25px ;
+    margin-top: 15px;
+  }
+  .p-tag{
+    word-wrap: break-word;
+  overflow-wrap: break-word;
+  }
+  h2 {
+    word-wrap: break-word;
+    
+  }

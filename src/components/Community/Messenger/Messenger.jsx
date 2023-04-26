@@ -56,7 +56,7 @@ socket.current = io(import.meta.env.VITE_APP_SOCKET_URL)
         });
       });
     } catch (error) {
-      console.log(error)
+
     }
   }, []);
 
@@ -69,7 +69,6 @@ socket.current = io(import.meta.env.VITE_APP_SOCKET_URL)
   useEffect(() => {
     socket.current.emit("addUser", userDetails._id);
     socket.current.on("getUsers", (users) => {
-      console.log("users ",users)
     });
   }, [userDetails]);
 
@@ -82,7 +81,6 @@ socket.current = io(import.meta.env.VITE_APP_SOCKET_URL)
         setConversations(res);
       })();
     } catch (error) {
-      console.log(error);
     }
   }, []);
 
@@ -94,7 +92,6 @@ socket.current = io(import.meta.env.VITE_APP_SOCKET_URL)
         setMessages(res);
       })();
     } catch (error) {
-      console.log(error);
     }
   }, [currentChat,messages]);
 
@@ -122,7 +119,6 @@ socket.current = io(import.meta.env.VITE_APP_SOCKET_URL)
       setMessages([...messages, res]);
       setNewMessage("");
     } catch (error) {
-      console.log(error)
     }
   };
 
@@ -142,7 +138,7 @@ socket.current = io(import.meta.env.VITE_APP_SOCKET_URL)
     const type = !image ? "video" : "image";
     const file = !image ? videoFile : image;
     if (file.size > 70000000) {
-      toast.error("seems lik ebidg a filen take some time");
+      toast.error("seems like big a filen take some time");
     }
     const data = new FormData();
     data.append("file", file);
@@ -176,7 +172,6 @@ socket.current = io(import.meta.env.VITE_APP_SOCKET_URL)
 
       //sending to the database
       postMessages(message, tokenData).then((response) => {
-        console.log("response ", response);
         setMessages([...messages]);
         setVideoFile(null);
         setImage(null);
@@ -185,7 +180,6 @@ socket.current = io(import.meta.env.VITE_APP_SOCKET_URL)
       console.log("error wile uploading to cloudinary ", error);
     }
   };
-  console.log(messages)
 
   return (
     <>
@@ -291,7 +285,7 @@ socket.current = io(import.meta.env.VITE_APP_SOCKET_URL)
                     </div>
                   )}
 
-                  <InputEmoji
+                  <InputEmoji 
                     className="chatMessageInput"
                     onChange={(value) => setNewMessage(value)}
                     value={newMessage}

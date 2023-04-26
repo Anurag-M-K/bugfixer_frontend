@@ -191,7 +191,6 @@ function MainQuestion() {
     }
   }
   async function decVoting(question_id) {
-    console.log(question_id);
     try {
       const data = await questionDecVoting(question_id, tokenData);
       const getSingleQuestion = await axios.get(`/api/question/${id}`);
@@ -261,7 +260,6 @@ function MainQuestion() {
 
   ///answer accepting
   const acceptingAnswer = async (aid) => {
-    console.log("toke data ", tokenData);
     try {
       swal({
         title: "Are you sure?",
@@ -293,14 +291,14 @@ function MainQuestion() {
     <div className="main col-xl-12">
       <div className="main-container">
         <div className="main-top">
-          <h2 className="main-question">{questionData?.title}</h2>
+          <h2 style={{overflowWrap:"anywhere"}} className="p-tag main-question ">{questionData?.title}</h2>
         </div>
         <div className="main-desc">
           <div className="info">
             <p>
               Active <span>today</span>
             </p>
-            <p>{new Date(questionData?.created_at).toLocaleString()}</p>
+            <p className="p-tag">{new Date(questionData?.created_at).toLocaleString()}</p>
             <p>
               Viewed <span>43 times</span>
             </p>
@@ -360,12 +358,7 @@ function MainQuestion() {
                       <ReportReason questionData={questionData} />
                     </small>
                   </div>
-                  <div className="bookmark">
-                    <Bookmark />
-                  </div>
-                  <div className="history">
-                    <History />
-                  </div>
+                        
                 </div>
 : 
 
@@ -416,26 +409,21 @@ function MainQuestion() {
     <ReportReason questionData={questionData} />
   </small>
 </div>
-<div className="bookmark">
-  <Bookmark />
-</div>
-<div className="history">
-  <History />
-</div>
+
 </div>}
               </div>
               
               <div className="col-md-10" >
                 <div className="question-answer">
                   
-                    <p style={{width:"30vw" , overflowY:"hidden"}}>{ReactHtmlParser(questionData?.body)}</p>
+                    <p className="p-tag" style={{width:"30vw" , overflowY:"hidden"}}>{ReactHtmlParser(questionData?.body)}</p>
                   <div className="author">
                     <small>
                       asked{new Date(questionData?.created_at).toLocaleString()}
                     </small>
                     <div className="auth-details">
                       <Avatar src={questionData?.user?.imageUrl} />
-                      <p>
+                      <p className="p-tag">
                         {questionData?.user?.firstName
                           ? questionData?.user?.firstName
                           : String(questionData?.user?.email).split("@")[0]}
@@ -445,7 +433,7 @@ function MainQuestion() {
                   <div className="comments">
                     {commentDetails &&
                       commentDetails?.map((_qd) => (
-                        <p>
+                        <p className="p-tag">
                           {_qd?.comment}-{" "}
                           <span>
                             {" "}
@@ -642,7 +630,7 @@ function MainQuestion() {
                   justifyContent: " space-evenly",
                 }}
               >
-                <p>{ReactHtmlParser(_q?.answer)}</p>
+                <p className="p-tag">{ReactHtmlParser(_q?.answer)}</p>
               </div>
               <div className="author-answer">
                 <small>{new Date(_q?.created_at).toLocaleString()}</small>
@@ -680,6 +668,8 @@ function MainQuestion() {
           }}
         />
       </div>
+      <div className="submit-btn">
+
       <button
         className="btn btn-primary"
         type="submit"
@@ -688,10 +678,10 @@ function MainQuestion() {
           maxWidth: "fit-content",
           marginTop: "100px",
         }}
-      >
+        >
         Post Your Answer
       </button>
-      {/* <Toaster /> */}
+        </div>
     </div>
   );
 }

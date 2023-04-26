@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import LeftSidebar from "../Questions/LeftSidebar";
 import RightSidebar from "../Questions/RightSidebar";
-import Pagination from "../Questions/Pagination";
 import axios from "../../../config/axiosInstance";
 import {useDispatch}  from 'react-redux'
 import {filterQuestionDetails, setQuestionDetails} from '../../../redux/features/questionSlice'
 import MainQuestion from "../ViewQuestion/MainQuestion";
 import Header from "../Header/Header";
+import Footer from "../Footer";
 
 const ViewQuestions = () => {
   const dispatch = useDispatch()
@@ -28,9 +28,6 @@ useEffect(()=>{
   findQuestions()
 },[])
 
-
-
-
 questions.filter((val)=>{
   if(searchTerm == ""){
     return val
@@ -43,8 +40,6 @@ dispatch(filterQuestionDetails([val]))
     
   return val.title
 })
-
-
 
 
   return (
@@ -68,8 +63,6 @@ dispatch(filterQuestionDetails([val]))
             {/* <UserQuestions  /> */}
             <MainQuestion/>
 
-            {/* Pagination added */}
-            <Pagination />
           </div>
 
           {/* Right Sidebar added */}
@@ -80,6 +73,7 @@ dispatch(filterQuestionDetails([val]))
             <RightSidebar />
           </div>
         </div>
+        <div><Footer/></div>
       </div>
     </>
   );

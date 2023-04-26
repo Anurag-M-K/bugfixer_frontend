@@ -14,7 +14,6 @@ const Questions = () => {
 const [searchTerm , setSearchTerm] = useState('');
 const navigate = useNavigate()
 
-console.log("qustions ",questions)
 //geting questions and updating question redux
 useEffect(()=>{
   async function findQuestions(){
@@ -60,7 +59,7 @@ dispatch(filterQuestionDetails([val]))
                 <h2 className="font-weight-normal">
                   Questions
                 </h2>
-                <input className="searchInput" type="text" placeholder="search..." onChange={event => {setSearchTerm(event.target.value)}} />
+                {/* <input className="searchInput" type="text" placeholder="search..." onChange={event => {setSearchTerm(event.target.value)}} /> */}
                 
                 <button onClick={()=>navigate('/user/add-question')}
                   className="btn btn-primary btn-small" 

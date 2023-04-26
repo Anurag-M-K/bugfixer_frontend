@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Questions.scss";
 import LeftSidebar from "./LeftSidebar";
 import RightSidebar from "./RightSidebar";
-import UserQuestions from "./UserQuestions";
-import Pagination from "./Pagination";
 import { Link } from "react-router-dom";
 import axios from "../../../config/axiosInstance";
 import {useDispatch}  from 'react-redux'
@@ -84,8 +82,7 @@ dispatch(filterQuestionDetails([val]))
             {/* <UserQuestions  /> */}
             <MainQuestion/>
 
-            {/* Pagination added */}
-            <Pagination />
+           
           </div>
 
           {/* Right Sidebar added */}

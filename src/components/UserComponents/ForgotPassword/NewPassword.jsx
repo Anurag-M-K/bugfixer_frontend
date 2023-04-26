@@ -25,7 +25,6 @@ function NewPassword() {
 	}, [param, url]);
 
     const onSubmit = (values)=>{
-        console.log(values)
         try {
             (async ()=>{
                 const data = await addingNewPassword(values.password,param.id)
