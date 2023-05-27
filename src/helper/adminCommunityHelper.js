@@ -1,4 +1,4 @@
-import instance from "../config/axiosInstance";
+  import instance from "../config/axiosInstance";
 
 export const addCommunityPosts = async (data) => {
   try {
